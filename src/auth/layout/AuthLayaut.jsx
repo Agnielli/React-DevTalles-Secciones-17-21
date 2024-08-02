@@ -20,7 +20,7 @@ export const AuthLayaut = ({ children, title = '' }) => {
           borderRadius: 2 
         }}>
           <Typography variant='h5' sx={{ mb: 1 }}>{ title }</Typography>
-          <hr />
+        
 
         { children }
          
