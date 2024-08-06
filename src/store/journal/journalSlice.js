@@ -47,18 +47,36 @@
       //   return note;
       // }
       
-      state.messageSaved = `${ action.payload.title }, actualizada correctamente`;
+      state.messageSaved = `${ action.payload.title } - Actualizada correctamente`;
+    },
+    setPhotosToActiveNote: (state, action) => {
+      state.active.imageUrls = [...state.active.imageUrls, ...action.payload];
+      state.isSaving = false;
+    },
+    clearNotesLogout: (state) => {
+      state.isSaving = false;
+      state.messageSaved = '';
+      state.notes = [];
+      state.active = null;
     },
     deleteNoteById: (state, action) => {
-
+      state.active = null;
+      state.notes = state.notes.filter( note => note.id !== action.payload )
     },
+    // deleteImgById: (state, action) => {
+    //   state.active = null;
+    //   state.active.imagesUrls = state.active.imagesUrls.filter( img => img.id !== action.payload )
+    // }
   }
 });
 export const { 
               addNewEmptyNote, 
+              clearNotesLogout,
+              deleteImgById,
               deleteNoteById,
               savingNewNote, 
               setActiveNote, 
               setNotes, 
+              setPhotosToActiveNote,
               setSaving, 
               updateNote, } = journalSlice.actions;
