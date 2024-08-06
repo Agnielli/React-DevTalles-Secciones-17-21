@@ -8,15 +8,15 @@ import { fileUpload, loadNotes } from '../../helpers';
 export const startNewNote = () => {
     return async ( dispatch, getState ) => {
 
-      // tarea dispatch
       dispatch( savingNewNote() )
 
       const { uid } = getState().auth;
       
       const newNote = {
-        body: '',
-        date: new Date().getTime(),
         title: '',
+        body: '',
+        imageUrls: [],
+        date: new Date().getTime(),
       }
       const newDoc = doc( collection( FirebaseDB, `${ uid }/journal/notes` ) );
       await setDoc( newDoc, newNote );
