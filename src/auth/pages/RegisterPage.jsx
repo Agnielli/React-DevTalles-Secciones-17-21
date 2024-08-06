@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom"
 import { Grid, TextField, Typography, Button, Link, Alert } from "@mui/material"
 import { AuthLayaut } from "../layout/AuthLayaut"
 import { useForm } from "../../hooks"
-import { startCreatingUserWithEmailPassword } from "../../strore/auth"
+import { startCreatingUserWithEmailPassword } from "../../store/auth"
 
 const formData = {
     email: '',
@@ -44,7 +44,7 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayaut title="Crear cuenta">
-      <form onSubmit={ onSubmit }>
+      <form onSubmit={ onSubmit } className="animate__animated animate__fadeIn animate__faster">
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField 

@@ -5,7 +5,12 @@ import { Grid, TextField, Typography, Button, Link, Alert } from "@mui/material"
 import { Google } from "@mui/icons-material"
 import { AuthLayaut } from "../layout/AuthLayaut"
 import { useForm } from "../../hooks"
-import { startGoogleSignIn, startLoginWithEmailPassword } from "../../strore/auth"
+import { startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth"
+
+const formData = {
+  email: '',
+  password: ''
+}
 
 export const LoginPage = () => {
 
@@ -13,7 +18,7 @@ export const LoginPage = () => {
 
   const dispatch = useDispatch();
   
-  const { email, password, onInputChange } = useForm()
+  const { email, password, onInputChange } = useForm(formData)
 
   const isAuthenticating = useMemo( () => status === 'checking', [status]);
 
@@ -30,7 +35,7 @@ export const LoginPage = () => {
 
   return (
     <AuthLayaut title="Login">
-      <form onSubmit={ onSubmit }>
+      <form onSubmit={ onSubmit } className="animate__animated animate__fadeIn animate__faster">
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField 
